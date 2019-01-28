@@ -1,0 +1,27 @@
+-- @D:\csy1026\scripts\create_18427982.txt
+/* Ryan welsford 
+18427982
+ 2019
+ CSY1026
+ CSY1026_174@students/18427982 */
+
+-- SELECT TNAME FROM TAB displays all table names currently
+-- create tables various seperate columns need commas at end of line
+CREATE TABLE sites (
+site_id NUMBER(5),
+site_name VARCHAR2(20),
+location VARCHAR2(30));
+
+CREATE TABLE subject_areas (
+subject_id NUMBER(8),
+subject_name VARCHAR2(25),
+description VARCHAR2(50));
+
+CREATE TABLE trainers (
+trainer_id NUMBER(8),
+t_firstname VARCHAR2(15),
+t_surname VARCHAR2(30),
+mentor_id NUMBER(8) NULL,
+contact_no VARCHAR2(15),
+rate NUMBER(6,2));
+

@@ -1,0 +1,19 @@
+-- @D:\csy1026\scripts\drop_18427982.txt
+/* Ryan welsford 
+18427982
+ 2019
+ CSY1026
+ CSY1026_174@students/18427982 */
+ 
+ -- tables dropped 
+ -- DROP TABLE sites;
+
+DROP TABLE subject_areas;
+
+DROP TABLE trainers;
+
+DROP TABLE locations;
+
+
+-- purge from recyclebin
+PURGE RECYCLEBIN;
