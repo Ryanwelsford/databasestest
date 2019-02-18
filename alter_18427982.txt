@@ -1,0 +1,134 @@
+--  @D:\csy1026\scripts\alter_18427982.txt;
+/* Ryan welsford 
+18427982
+ 2019
+ CSY1026
+ CSY1026_174@students/18427982 */
+ 
+ -- modify zone
+ -- alters table sites, column location with a larger datatype value
+ALTER TABLE sites MODIFY (
+location VARCHAR2(40));
+
+-- alters table trainers, column contact_no to not null
+ALTER TABLE trainers MODIFY (
+contact_no NOT NULL);
+
+
+-- use SELECT constraint_name FROM user_constraints; to view all constraints
+
+-- primary key areas
+-- alters table sites to add primary key! 
+ALTER TABLE sites
+ADD CONSTRAINT pk_sites 
+PRIMARY KEY (site_id); 
+-- primary key value must be in parathesis.
+-- name of constraint is in add constraint
+
+-- alters tables subject_areas to add pk_sites
+ALTER TABLE subject_areas
+ADD CONSTRAINT pk_subject_areas
+PRIMARY KEY (subject_id);
+
+-- alters table trainers to add pk!
+ALTER TABLE trainers
+ADD CONSTRAINT pk_trainers
+PRIMARY KEY (trainer_id);
+
+-- alters table students to add pk!
+ALTER TABLE students
+ADD CONSTRAINT pk_students
+PRIMARY KEY (student_id);
+
+-- alters table courses to add pk
+ALTER TABLE courses
+ADD CONSTRAINT pk_courses
+PRIMARY KEY (course_id);
+
+ALTER TABLE course_runs
+ADD CONSTRAINT pk_course_runs
+PRIMARY KEY (running_id);
+
+ALTER TABLE attendances
+ADD CONSTRAINT pk_attendances
+PRIMARY KEY (running_id, student_id);
+
+ALTER TABLE invoices
+ADD CONSTRAINT pk_invoices
+PRIMARY KEY (invoice_id);
+
+-- foreign keys
+ALTER TABLE courses
+ADD CONSTRAINT fk_c_subject_areas
+FOREIGN KEY (subject_id)
+REFERENCES subject_areas(subject_id);
+
+ALTER TABLE attendances
+ADD CONSTRAINT fk_a_course_runs
+FOREIGN KEY (running_id)
+REFERENCES course_runs(running_id);
+
+ALTER TABLE attendances
+ADD CONSTRAINT fk_a_students
+FOREIGN KEY (student_id)
+REFERENCES students(student_id);
+
+ALTER TABLE course_runs
+ADD CONSTRAINT fk_cr_courses
+FOREIGN KEY (course_id)
+REFERENCES courses(course_id);
+
+ALTER TABLE course_runs
+ADD CONSTRAINT fk_cr_trainers
+FOREIGN KEY (trainer_id)
+REFERENCES trainers(trainer_id);
+
+-- commented keys are keys referenceing tables not yet created.
+/* ALTER TABLE course_runs
+ADD CONSTRAINT fk_cr_sites
+FOREIGN KEY (site_id)
+REFERENCES sites(site_id); */
+
+ALTER TABLE invoices
+ADD CONSTRAINT fk_i_students
+FOREIGN KEY (student_id)
+REFERENCES students(student_id);
+
+/* ALTER TABLE invoices
+ADD CONSTRAINT fk_i_companies
+FOREIGN KEY (company_id)
+REFERENCES companies(company_id); */
+
+
+
+-- check constraints
+-- check constraints add conditions that data must follow i.e. UPPER data must be upper case
+ALTER TABLE students
+ADD CONSTRAINT ck_student_firstname
+CHECK (firstname = UPPER(firstname)); 
+
+ALTER TABLE students
+ADD CONSTRAINT ck_student_lastname
+CHECK (lastname = UPPER(lastname));
+
+ALTER TABLE courses
+ADD CONSTRAINT ck_courses_duration
+CHECK (duration IN('3', '5'));
+
+-- adds 
+ALTER TABLE students ADD (
+dob DATE);
+
+-- alter table trainers
+ALTER TABLE trainers ADD (
+car_reg VARCHAR2(8));
+
+-- alters drops
+ALTER TABLE students DROP (
+date_of_birth);
+
+-- adds unique constraint
+ALTER TABLE trainers 
+ADD CONSTRAINT u_trainers
+UNIQUE (car_reg);
+

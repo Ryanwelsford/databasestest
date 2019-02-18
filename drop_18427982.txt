@@ -1,9 +1,76 @@
--- @D:\csy1026\scripts\drop_18427982.txt
+--  @D:\csy1026\scripts\drop_18427982.txt;
 /* Ryan welsford 
 18427982
  2019
  CSY1026
  CSY1026_174@students/18427982 */
+ 
+ 
+ --foreign key drops
+ 
+ ALTER TABLE courses
+ DROP CONSTRAINT fk_c_subject_areas;
+ 
+ ALTER TABLE attendances
+ DROP CONSTRAINT fk_a_course_runs;
+ 
+ ALTER TABLE attendances
+ DROP CONSTRAINT fk_a_students;
+ 
+ ALTER TABLE course_runs
+ DROP CONSTRAINT fk_cr_courses;
+ 
+ ALTER TABLE course_runs
+ DROP CONSTRAINT fk_cr_trainers;
+ 
+ /* ALTER TABLE course_runs
+ DROP CONSTRAINT fk_cr_sites; */
+ 
+ ALTER TABLE invoices
+ DROP CONSTRAINT fk_i_students;
+ 
+ /* ALTER TABLE invoices
+ DROP CONSTRAINT fk_i_companies; */
+ 
+ -- unique drops
+ ALTER TABLE trainers 
+ DROP CONSTRAINT u_trainers;
+ -- drops unique constraint.
+ 
+ -- check drops
+ ALTER TABLE students
+ DROP CONSTRAINT ck_student_firstname;
+ 
+ ALTER TABLE students
+ DROP CONSTRAINT ck_student_lastname;
+ 
+ ALTER TABLE courses
+ DROP CONSTRAINT ck_courses_duration;
+ 
+ -- primary drops
+ -- constraint drops
+ ALTER TABLE sites
+ DROP CONSTRAINT pk_sites;
+ 
+ ALTER TABLE subject_areas
+ DROP CONSTRAINT pk_subject_areas;
+ -- drop primary key used instead of pk_subject_areas as a test, didnt work?
+ 
+ 
+ ALTER TABLE trainers
+ DROP CONSTRAINT pk_trainers;
+ 
+ ALTER TABLE students
+ DROP CONSTRAINT pk_students;
+ 
+ ALTER TABLE courses
+ DROP CONSTRAINT pk_courses;
+ 
+ ALTER TABLE course_runs
+ DROP CONSTRAINT pk_course_runs;
+ 
+ ALTER TABLE attendances
+ DROP CONSTRAINT pk_attendances;
  
  -- tables dropped 
  -- DROP TABLE sites;
@@ -12,7 +79,17 @@ DROP TABLE subject_areas;
 
 DROP TABLE trainers;
 
-DROP TABLE locations;
+DROP TABLE sites;
+
+DROP TABLE students;
+
+DROP TABLE courses;
+
+DROP TABLE course_runs;
+
+DROP TABLE attendances;
+
+DROP TABLE invoices;
 
 
 -- purge from recyclebin

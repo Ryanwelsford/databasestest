@@ -1,4 +1,4 @@
--- @D:\csy1026\scripts\create_18427982.txt
+--  @D:\csy1026\scripts\create_18427982.txt;
 /* Ryan welsford 
 18427982
  2019
@@ -7,6 +7,8 @@
 
 -- SELECT TNAME FROM TAB displays all table names currently
 -- create tables various seperate columns need commas at end of line
+
+-- create tables
 CREATE TABLE sites (
 site_id NUMBER(5),
 site_name VARCHAR2(20),
@@ -15,7 +17,7 @@ location VARCHAR2(30));
 CREATE TABLE subject_areas (
 subject_id NUMBER(8),
 subject_name VARCHAR2(25),
-description VARCHAR2(50));
+description VARCHAR2(500));
 
 CREATE TABLE trainers (
 trainer_id NUMBER(8),
@@ -25,3 +27,36 @@ mentor_id NUMBER(8) NULL,
 contact_no VARCHAR2(15),
 rate NUMBER(6,2));
 
+CREATE TABLE students (
+student_id NUMBER(8),
+firstname VARCHAR2(15),
+lastname VARCHAR2(30),
+date_of_birth DATE);
+
+CREATE TABLE courses (
+course_id NUMBER(8),
+course_title VARCHAR2(50),
+duration NUMBER(2),
+cost NUMBER(5,2),
+subject_id NUMBER(8) NOT NULL);
+
+CREATE TABLE course_runs (
+running_id NUMBER(8),
+site_id NUMBER(8) NOT NULL,
+course_id NUMBER(8) NOT NULL,
+trainer_id NUMBER(8) NOT NULL,
+start_date DATE);
+
+CREATE TABLE attendances (
+running_id NUMBER(8) NOT NULL,
+student_id NUMBER(8) NOT NULL,
+amount_paid NUMBER(5,2));
+
+CREATE TABLE invoices (
+invoice_id NUMBER(8),
+company_id NUMBER(8),
+student_id NUMBER(8),
+billing_date DATE);
+
+-- remember to open 1st practical for ERM and table specs! 
+-- will be needed for future tables.
